@@ -1,0 +1,38 @@
+  /* styles/FirstTimePrompt.css */
+  .first-time-prompt {
+    background-color: var(--surface);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 4px var(--accent);
+    animation: pulse 2s infinite;
+  }
+  
+  .info-icon {
+    font-size: 1.2rem;
+    animation: bounce 1s infinite;
+    display: inline-block;
+  }
+  
+  .prompt-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: flex-end;
+  }
+  
+  .close-prompt {
+    background-color: var(--surface);
+    color: var(--text);
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 4px var(--accent); }
+    50% { box-shadow: 0 0 0 6px var(--accent); }
+    100% { box-shadow: 0 0 0 4px var(--accent); }
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }

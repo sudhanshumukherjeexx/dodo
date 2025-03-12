@@ -8,8 +8,11 @@ import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { db } from './firebase';
-import { collection, addDoc, doc, deleteDoc, updateDoc, getDocs, query, where, getDoc, setDoc } from 'firebase/firestore';
+import { collection, doc, deleteDoc, updateDoc, getDocs, query, getDoc, setDoc } from 'firebase/firestore';
 import './styles/App.css';
+import FirstTimePrompt from './components/FirstTimePrompt';
+import InfoModal from './components/InfoModal';
+import dodoLogo from './assets/dodo_logo.png';
 
 // Move PrivateRoute outside of App component
 function PrivateRoute({ children }) {
@@ -27,6 +30,37 @@ function MainContent() {
   });
   const [currentDate, setCurrentDate] = useState(new Date().toISOString().split('T')[0]);
   const { currentUser } = useAuth();
+  
+  // Add new state variables for the info modal and first-time prompt
+  const [showInfoModal, setShowInfoModal] = useState(false);
+  const [showFirstTimePrompt, setShowFirstTimePrompt] = useState(false);
+  
+  // Check if user is first-time visitor
+  useEffect(() => {
+    if (currentUser) {
+      const hasVisitedBefore = localStorage.getItem(`visitedBefore-${currentUser.uid}`);
+      if (!hasVisitedBefore) {
+        setShowFirstTimePrompt(true);
+        localStorage.setItem(`visitedBefore-${currentUser.uid}`, 'true');
+      }
+    }
+  }, [currentUser]);
+  
+  // Function to close the first-time prompt
+  const closeFirstTimePrompt = () => {
+    setShowFirstTimePrompt(false);
+  };
+  
+  // Function to open the info modal
+  const openInfoModal = () => {
+    setShowInfoModal(true);
+    setShowFirstTimePrompt(false);
+  };
+  
+  // Function to close the info modal
+  const closeInfoModal = () => {
+    setShowInfoModal(false);
+  };
   
   // Load tasks from Firestore when user changes
   useEffect(() => {
@@ -244,17 +278,36 @@ function MainContent() {
   return (
     <div className="retro-app">
       <header className="pixel-header">
-        <h1 className="glitch-text">DODO</h1>
+        <div className="logo-container">
+          <img src={dodoLogo} alt="DODO Logo" className="app-logo" />
+          <h1 className="glitch-text"> </h1>                                 {/*text idhar*/} 
+        </div>
         {currentUser && (
-          <div className="score-display">
-            SCORE: {Object.values(stats.dailyStats).reduce((sum, day) => sum + day.points, 0)}
-          </div>
+          <>
+            <button 
+              className="info-button"
+              onClick={openInfoModal}
+              title="About DODO"
+            >
+              ℹ️
+            </button>
+            <div className="score-display">
+              SCORE: {Object.values(stats.dailyStats).reduce((sum, day) => sum + day.points, 0)}
+            </div>
+          </>
         )}
       </header>
       
       <Navigation />
       
       <div className="main-content">
+        {currentUser && showFirstTimePrompt && (
+          <FirstTimePrompt 
+            isVisible={showFirstTimePrompt}
+            onClose={closeFirstTimePrompt}
+            onOpenInfo={openInfoModal}
+          />
+        )}
         <Routes>
           {/* Auth Routes */}
           <Route path="/login" element={<Login />} />
@@ -265,6 +318,7 @@ function MainContent() {
             path="/" 
             element={
               <PrivateRoute>
+                <>
                 <TaskList 
                   title="TODAY'S QUESTS"
                   tasks={getTodaysTasks()} 
@@ -272,6 +326,7 @@ function MainContent() {
                   onDelete={deleteTask}
                   onAdd={addTask}
                 />
+                </>
               </PrivateRoute>
             } 
           />
@@ -325,8 +380,30 @@ function MainContent() {
         </Routes>
       </div>
       
+      <InfoModal 
+        isOpen={showInfoModal}
+        onClose={closeInfoModal}
+      />
+      
       <footer className="pixel-footer">
-        <p>© {new Date().getFullYear()} RETRO TODO</p>
+        <div className="footer-author">by Sudhanshu Mukherjee</div>
+        <div className="footer-links">
+          <a 
+            href="https://www.linkedin.com/in/sudhanshumukherjeexx/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="uiverse-button"
+          >
+            LinkedIn
+          </a>
+          <a 
+            href="mailto:sud@hustledata.io" 
+            className="uiverse-button"
+          >
+            Contact
+          </a>
+        </div>
+        <p>© {new Date().getFullYear()} DoDo</p>
       </footer>
     </div>
   );

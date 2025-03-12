@@ -1,233 +1,640 @@
 /* styles/App.css */
-/* @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap'); */
-
-/* :root {
-  --primary: #6e44ff;
-  --secondary: #2de2e6;
-  --accent: #ff3864;
-  --background: #261447;
-  --surface: #3b2064;
-  --text: #f9f9f9;
-  --success: #59ff5a;
-  --warning: #fcba03;
-} */
-
-/* Dark Theme*/
-/* :root {
-  --primary: #6e44ff; 
-  --secondary: #2de2e6; 
-  --accent: #ff3864; 
-  --background: #1a1a2e; 
-  --surface: #252450; 
-  --text: #f9f9f9; 
-  --success: #59ff5a; 
-  --warning: #fcba03; 
-} */
-
-/* Orange Theme*/
-/* :root {
-  --primary: #ff4c4c; 
-  --secondary: #f1c40f; 
-  --accent: #8e44ad; 
-  --background: #0d0d0d; 
-  --surface: #333333; 
-  --text: #ecf0f1; 
-  --success: #2ecc71; 
-  --warning: #f39c12; 
-} */
-
-
-
-
-/* styles/App.css */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
-  --primary: #6e44ff; 
-  --secondary: #2de2e6; 
-  --accent: #6e44ff; 
-  --background: #1a1a2e; 
-  --surface: #252450; 
-  --text: #f9f9f9; 
-  --success: #59ff5a; 
-  --warning: #fcba03; 
+  /* Modern color palette */
+  --primary: #4361ee;        /* Primary blue */
+  --primary-light: #4895ef;  /* Light blue */
+  --secondary: #3a0ca3;      /* Deep purple */
+  --accent: #f72585;         /* Vibrant pink */
+  --background: #ffffff;     /* Clean white background */
+  --background-alt: #f8f9fa; /* Light gray alternate background */
+  --surface: #ffffff;        /* White surface */
+  --text-primary: #212529;   /* Dark gray for main text */
+  --text-secondary: #6c757d; /* Medium gray for secondary text */
+  --success: #4bb543;        /* Success green */
+  --warning: #ffbe0b;        /* Warning yellow */
+  --error: #ff5a5f;          /* Error red */
+  --border: #dee2e6;         /* Light border color */
+  
+  /* Typography */
+  --font-family: 'Roboto', sans-serif;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --border-radius: 8px;
 }
 
+/* Reset & Base Styles */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Press Start 2P', cursive;
+  font-family: var(--font-family);
 }
 
 body {
   background-color: var(--background);
-  color: var(--text);
+  color: var(--text-primary);
   line-height: 1.6;
-  image-rendering: pixelated;
+  font-weight: 400;
+  font-size: 16px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* App Container */
 .retro-app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
 }
 
+/* Header */
 .pixel-header {
   background-color: var(--surface);
-  padding: 20px;
+  padding: 1.25rem;
   text-align: center;
-  border-bottom: 4px solid var(--accent);
-  position: relative;
-  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-bottom: 2rem;
 }
 
 .glitch-text {
-  color: var(--secondary);
-  text-shadow: 
-    2px 2px 0 var(--accent),
-    -2px -2px 0 var(--primary);
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-  font-size: 2rem;
-}
+    color: var(--primary);
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+    background-clip: text;          /* Add this line */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(67, 97, 238, 0.3);
+  }
 
 .score-display {
   background-color: var(--primary);
-  color: var(--text);
-  padding: 5px 10px;
-  border: 2px solid var(--text);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border-radius: var(--border-radius);
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 0.7rem;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 1rem;
+  box-shadow: var(--shadow);
 }
 
+/* Main Content */
 .main-content {
   flex: 1;
-  max-width: 800px;
+  max-width: 960px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.5rem 2rem;
 }
 
+/* Footer */
 .pixel-footer {
+  background-color: var(--background-alt);
   text-align: center;
-  padding: 10px;
-  font-size: 0.6rem;
-  color: var(--secondary);
-  margin-top: 20px;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: auto;
+  border-top: 1px solid var(--border);
 }
 
+/* Buttons */
 .pixel-button {
   background-color: var(--primary);
-  color: var(--text);
+  color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 0.75rem 1.5rem;
   cursor: pointer;
-  font-size: 0.7rem;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
-  transition: all 0.1s ease;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  box-shadow: var(--shadow);
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .pixel-button:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .pixel-button:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
-}
-
-.pixel-input, .pixel-select {
-  background-color: var(--text);
-  color: var(--background);
-  border: 3px solid var(--surface);
-  padding: 8px;
-  font-size: 0.7rem;
-}
-
-.pixel-input:focus, .pixel-select:focus {
-  outline: none;
-  border-color: var(--secondary);
-}
-
-.pixel-title {
-  color: var(--secondary);
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  border-bottom: 4px solid var(--primary);
-  padding-bottom: 10px;
-}
-
-.section-title {
-  color: var(--accent);
-  margin: 20px 0;
-  font-size: 1rem;
-}
-
-/* Pixel corner styling for various elements */
-.pixel-button, .pixel-input, .pixel-select, .task-item, .timer-display,
-.stat-card, .chart-container, .achievement {
-  position: relative;
-  image-rendering: pixelated;
-}
-
-.pixel-button::after, .pixel-input::after, .pixel-select::after, 
-.task-item::after, .timer-display::after, .stat-card::after, 
-.chart-container::after, .achievement::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    linear-gradient(to right, var(--surface) 1px, transparent 1px) 0 0 / 4px 4px,
-    linear-gradient(to bottom, var(--surface) 1px, transparent 1px) 0 0 / 4px 4px;
-  pointer-events: none;
-  opacity: 0.05;
+  transform: translateY(0);
 }
 
 .add-button {
   background-color: var(--success);
-  color: var(--background);
 }
 
 .delete-button {
-  background-color: var(--accent);
+  background-color: var(--error);
 }
 
 .start-button {
   background-color: var(--success);
-  color: var(--background);
 }
 
 .pause-button {
   background-color: var(--warning);
-  color: var(--background);
+  color: var(--text-primary);
 }
 
 .reset-button {
-  background-color: var(--accent);
+  background-color: var(--text-secondary);
 }
 
-/* Responsive design */
+/* Form Elements */
+.pixel-input, 
+.pixel-select {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  width: 100%;
+  transition: var(--transition);
+  box-shadow: none;
+}
+
+.pixel-input:focus, 
+.pixel-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+}
+
+/* Section Titles */
+.pixel-title {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.75rem;
+}
+
+.section-title {
+  color: var(--secondary);
+  margin: 1.5rem 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Card Elements */
+.task-item, 
+.timer-display,
+.stat-card, 
+.chart-container, 
+.achievement,
+.welcome-card {
+  background-color: var(--surface);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.task-item:hover, 
+.achievement:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Footer Elements */
+.footer-author {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+/* Modern UI buttons */
+.uiverse-button {
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  background: var(--primary);
+  color: white;
+  transition: var(--transition);
+  text-decoration: none;
+  margin: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.uiverse-button:hover,
+.uiverse-button:focus {
+  background: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.uiverse-button:active {
+  transform: translateY(0);
+}
+
+/* Welcome Component */
+.welcome-card {
+  background-color: var(--surface);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.welcome-title {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.welcome-content {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.welcome-features {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+  list-style-type: none;
+}
+
+.welcome-features li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  font-weight: 400;
+}
+
+.welcome-features li:before {
+  content: '✓';
+  color: var(--success);
+  position: absolute;
+  left: -1.5rem;
+  font-weight: bold;
+}
+
+.welcome-instructions {
+  margin-top: 1.5rem;
+  background-color: var(--background-alt);
+  padding: 1.25rem;
+  border-left: 4px solid var(--primary);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.welcome-instructions p {
+  margin-bottom: 0.75rem;
+}
+
+/* Info Button */
+.info-button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  font-weight: bold;
+  width: 3.5rem;
+  height: 3.5rem;
+  cursor: pointer;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+}
+
+.info-button:hover {
+  transform: scale(1.1);
+  background-color: var(--primary-light);
+}
+
+/* Modal/Dialog Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--surface);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.modal-title {
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  font-size: 1.5rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .main-content {
+    max-width: 100%;
+  }
+}
+
+/* Navigation Tabs Styling */
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+/* Specific styling for top navigation links/buttons */
+.nav-tabs a, 
+.nav-tabs button,
+a[href="/"],
+a[href="/backlog"],
+a[href="/completed"],
+a[href="/timer"],
+a[href="/analytics"],
+a[href="/logout"],
+.navigation a,
+nav a {
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  letter-spacing: 0.8px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.nav-tabs a:hover, 
+.nav-tabs button:hover,
+a[href="/"]:hover,
+a[href="/backlog"]:hover,
+a[href="/completed"]:hover,
+a[href="/timer"]:hover,
+a[href="/analytics"]:hover,
+a[href="/logout"]:hover,
+.navigation a:hover,
+nav a:hover {
+  color: var(--primary);
+}
+
+.nav-tabs a.active, 
+.nav-tabs button.active,
+a[href="/"].active,
+a[href="/backlog"].active,
+a[href="/completed"].active,
+a[href="/timer"].active,
+a[href="/analytics"].active,
+.navigation a.active,
+nav a.active {
+  color: var(--primary);
+}
+
+.nav-tabs a.active::after, 
+.nav-tabs button.active::after,
+a[href="/"].active::after,
+a[href="/backlog"].active::after,
+a[href="/completed"].active::after,
+a[href="/timer"].active::after,
+a[href="/analytics"].active::after,
+.navigation a.active::after,
+nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Additional styling for active tab */
+.active {
+  font-weight: 800;
+  color: var(--primary) !important;
+  position: relative;
+}
+
+/* Customize the element that contains your tabs */
+nav, .navigation, .nav-container {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
 @media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  
   .glitch-text {
-    font-size: 1.5rem;
+    font-size: 2.25rem;
+  }
+  
+  .nav-tabs a, 
+  .nav-tabs button,
+  a[href="/"],
+  a[href="/backlog"],
+  a[href="/completed"],
+  a[href="/timer"],
+  a[href="/analytics"],
+  a[href="/logout"],
+  .navigation a,
+  nav a {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
   }
   
   .score-display {
     position: static;
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
   }
   
-  .main-content {
-    padding: 0 10px;
+  .pixel-title {
+    font-size: 1.5rem;
+  }
+  
+  .info-button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.1rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
   }
 }
 
+@media (max-width: 576px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .pixel-header {
+    padding: 1rem;
+  }
+  
+  .glitch-text {
+    font-size: 1.8rem;
+  }
+  
+  .nav-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 0.25rem;
+  }
+  
+  .nav-tabs a, 
+  .nav-tabs button,
+  a[href="/"],
+  a[href="/backlog"],
+  a[href="/completed"],
+  a[href="/timer"],
+  a[href="/analytics"],
+  a[href="/logout"],
+  .navigation a,
+  nav a {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  
+  .main-content {
+    padding: 0 1rem 1.5rem;
+  }
+  
+  .welcome-card {
+    padding: 1.5rem;
+  }
+  
+  .pixel-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .info-button {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1rem;
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .uiverse-button {
+    margin: 0.25rem 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .app-logo {
+    height: 60px;
+    width: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .app-logo {
+      height: 45px;
+    }
+  }

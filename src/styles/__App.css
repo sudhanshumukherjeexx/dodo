@@ -1,0 +1,373 @@
+/* styles/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+
+:root {
+  --primary: #ff8c42; /* Bold orange for emphasis */
+  --secondary: #ff4c4c; /* Dark gray for background */
+  --accent: #ffd700; /* Bright yellow for highlights */
+  --background: #121212; /* Deep black background for dark mode */
+  --surface: #333333; /* Dark surface for elements */
+  --text: #f0f0f0; /* Light gray text */
+  --success: #3cb371; /* Success green */
+  --warning: #ffcc00; /* Yellow for warnings */
+}
+
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  image-rendering: pixelated;
+}
+
+.retro-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.pixel-header {
+  background-color: var(--surface);
+  padding: 20px;
+  text-align: center;
+  border-bottom: 4px solid var(--accent);
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.glitch-text {
+  color: var(--secondary);
+  text-shadow: 
+    2px 2px 0 var(--accent),
+    -2px -2px 0 var(--primary);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.score-display {
+  background-color: var(--primary);
+  color: var(--text);
+  padding: 5px 10px;
+  border: 2px solid var(--text);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 0.7rem;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.pixel-footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.6rem;
+  color: var(--secondary);
+  margin-top: 20px;
+}
+
+.pixel-button {
+  background-color: var(--primary);
+  color: var(--text);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease;
+  text-transform: uppercase;
+}
+
+.pixel-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.pixel-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.pixel-input, .pixel-select {
+  background-color: var(--text);
+  color: var(--background);
+  border: 3px solid var(--surface);
+  padding: 8px;
+  font-size: 0.7rem;
+}
+
+.pixel-input:focus, .pixel-select:focus {
+  outline: none;
+  border-color: var(--secondary);
+}
+
+.pixel-title {
+  color: var(--secondary);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  border-bottom: 4px solid var(--primary);
+  padding-bottom: 10px;
+}
+
+.section-title {
+  color: var(--accent);
+  margin: 20px 0;
+  font-size: 1rem;
+}
+
+/* Pixel corner styling for various elements */
+.pixel-button, .pixel-input, .pixel-select, .task-item, .timer-display,
+.stat-card, .chart-container, .achievement {
+  position: relative;
+  image-rendering: pixelated;
+}
+
+.pixel-button::after, .pixel-input::after, .pixel-select::after, 
+.task-item::after, .timer-display::after, .stat-card::after, 
+.chart-container::after, .achievement::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(to right, var(--surface) 1px, transparent 1px) 0 0 / 4px 4px,
+    linear-gradient(to bottom, var(--surface) 1px, transparent 1px) 0 0 / 4px 4px;
+  pointer-events: none;
+  opacity: 0.05;
+}
+
+.add-button {
+  background-color: var(--success);
+  color: var(--background);
+}
+
+.delete-button {
+  background-color: var(--accent);
+}
+
+.start-button {
+  background-color: var(--success);
+  color: var(--background);
+}
+
+.pause-button {
+  background-color: var(--warning);
+  color: var(--background);
+}
+
+.reset-button {
+  background-color: var(--accent);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .glitch-text {
+    font-size: 1.5rem;
+  }
+  
+  .score-display {
+    position: static;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .main-content {
+    padding: 0 10px;
+  }
+}
+
+.uiverse-button {
+  /* typography */
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Press Start 2P', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  /* ui */
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 8px;
+  background: #f6781e;
+  color: #fff;
+  box-shadow: 0 0 0 3px #2f2e41, 0 6px 0 #2f2e41;
+  transition: all 0.1s ease, background 0.3s ease;
+  text-decoration: none;
+  margin: 5px;
+}
+
+/* ux */
+.uiverse-button:hover,
+.uiverse-button:focus {
+  background: #df6108;
+}
+
+.uiverse-button:active {
+  box-shadow: 0 0 0 3px #2f2e41, 0 4px 0 #2f2e41;
+  transform: translateY(2px);
+}
+
+.footer-author {
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+
+
+.footer-author {
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  color: var(--secondary);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.footer-button {
+  font-size: 0.6rem;
+  padding: 5px 10px;
+  background-color: var(--surface);
+  border: 2px solid var(--primary);
+}
+
+.footer-button:hover {
+  background-color: var(--primary);
+  color: var(--text);
+}
+
+.welcome-card {
+  background-color: var(--surface);
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px var(--primary);
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.welcome-title {
+  color: var(--secondary);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.welcome-content {
+  font-size: 0.8rem;
+}
+
+.welcome-features {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.welcome-features li {
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.welcome-features li:before {
+  content: '✓';
+  color: var(--success);
+  position: absolute;
+  left: -18px;
+}
+
+.welcome-instructions {
+  margin-top: 15px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-left: 4px solid var(--accent);
+}
+
+.welcome-instructions p {
+  margin-bottom: 5px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+.info-button {
+  background-color: #8844ee;  /* A vibrant purple color that fits retro theme */
+  color: white;
+  border: 3px solid #ffffff;
+  border-radius: 50%;  /* Make it a perfect circle */
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: fixed;  /* Changed from absolute to fixed to stay in viewport */
+  bottom: 20px;     /* Changed from top to bottom */
+  right: 20px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);  /* Glow effect */
+  z-index: 100;  /* Ensure it's above other elements */
+  animation: pulse 2s infinite;  /* Add a subtle pulsing animation */
+}
+
+.info-button:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+/* Pulsing animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(136, 68, 238, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(136, 68, 238, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(136, 68, 238, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .info-button {
+    bottom: 15px;    /* Changed from top to bottom */
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+}

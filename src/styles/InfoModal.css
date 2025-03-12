@@ -1,0 +1,105 @@
+/* styles/InfoModal.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .info-modal {
+    background-color: var(--surface);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 4px var(--primary);
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 4px solid var(--primary);
+  }
+  
+  .modal-title {
+    color: var(--secondary);
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .modal-content {
+    padding: 20px;
+    font-size: 0.8rem;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  
+  .info-features {
+    margin: 15px 0;
+    padding-left: 20px;
+  }
+  
+  .info-features li {
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .info-features li:before {
+    content: '✓';
+    color: var(--success);
+    position: absolute;
+    left: -18px;
+  }
+  
+  /* .info-instructions {
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-left: 4px solid var(--accent);
+  } */
+
+  /* .info-instructions {
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-left: 4px solid var(--primary); /* Change from --accent to --primary */
+  /*} */
+  
+  .info-instructions * {
+    color: var(--text-primary) !important;
+  }
+
+
+  .modal-footer {
+    padding: 15px 20px;
+    text-align: center;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
