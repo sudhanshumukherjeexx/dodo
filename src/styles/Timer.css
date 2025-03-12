@@ -1,0 +1,52 @@
+  /* styles/Timer.css */
+  .timer-container {
+    text-align: center;
+    background-color: var(--surface);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 4px var(--primary);
+  }
+  
+  .timer-display {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 4px;
+    margin: 20px auto;
+    display: inline-block;
+    min-width: 200px;
+  }
+  
+  .time-remaining {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .timer-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .time-selection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.7rem;
+  }
+  
+  .timer-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .timer-info {
+    margin-top: 20px;
+    font-size: 0.7rem;
+    color: var(--text);
+    opacity: 0.8;
+  }
+  
