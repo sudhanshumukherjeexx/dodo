@@ -1,4 +1,4 @@
-<img src="dodo.png" alt="DODO" width="500"/>
+<img src="dodo.png" alt="DODO" width="150"/>
 # Retro Todo App
 
 A retro-themed, gamified todo application built with React.
